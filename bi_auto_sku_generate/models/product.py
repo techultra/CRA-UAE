@@ -7,6 +7,7 @@ from odoo import models, fields, api, _
 class Product(models.Model):
     _inherit = "product.product"
 
+    @api.depends('name')
     def _make_sku_sequence(self):
         config_id = self.env['product.setting.sku'].search([], limit=1, order="id desc")
         if not config_id:
@@ -61,7 +62,7 @@ class Product(models.Model):
                 product.default_code = string
                 product.write({'default_code1' : string})
 
-    default_code = fields.Char('Internal Reference', index=True, compute='_make_sku_sequence')
+    default_code = fields.Char('Internal Reference', index=True, compute='_make_sku_sequence', store=True)
     default_code1 = fields.Char('code', index=True)
 
 class ProductTemplate(models.Model):
