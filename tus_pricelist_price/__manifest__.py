@@ -9,7 +9,7 @@
     'author': 'TechUltra Solutions',
     'website': 'https://www.techultrasolutions.com/',
     'maintainer': 'TechUltra Solutions',
-    'depends': ['sale_management'],
+    'depends': ['sale_management', 'stock_landed_costs'],
     'data': ['views/product_template_view.xml',
              'views/product_product_view.xml'],
     'installable': True,
