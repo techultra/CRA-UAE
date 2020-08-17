@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Product Pricelist price ',
+    'name': 'Product Pricelist price TUS',
     'version': '13.0.22',
     'license': 'OPL-1',
     'category': 'Sale',
