@@ -22,7 +22,7 @@
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='list_price']" position="after">
-                    <field name="price_list_price" optional="show" readonly="True"/>
+                    <field name="price_list_price" optional="show" readonly="False"/>
                     <field name="sales_count" string="Quantity to sold" optional="show"/>
                     <field name="product_landed_cost" optional="show" readonly="True"/>
                 </xpath>
