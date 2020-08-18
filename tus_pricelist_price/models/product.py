@@ -172,14 +172,3 @@ class ProductProduct(models.Model):
                 price_list_price=vals.get('price_list_price'), obj=self, tmpl=False, variant=True)
         res = super(ProductProduct, self).write(vals)
         return res
-
-                [('product_id', '=', product_id.id)])
-            if pricelist_item_ids:
-                product_id.price_list_price = pricelist_item_ids[0].fixed_price
-            else:
-                product_id.price_list_price = product_id.lst_price
-
-    price_list_price = fields.Float(string="Pricelist Price", compute='_compute_pricelist_price',
-                                    help="price list price of the product if the multiple price list then its take "
-                                         "first price list price",
-                                    default="0.0")
