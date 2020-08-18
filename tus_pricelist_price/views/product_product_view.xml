@@ -9,6 +9,7 @@
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='company_id']" position="after">
+
                     <field name="price_list_price" widget='monetary' readonly="False"/>
 
                     <field name="product_landed_cost" widget='monetary' readonly="True"/>
@@ -25,6 +26,7 @@
             <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='lst_price']" position="after">
+
                     <field name="price_list_price" optional="show" readonly="False"/> <!--readonly="True"-->
                     <field name="product_landed_cost" optional="show" readonly="True"/>
                     <field name="sales_count" string="Quantity to sold" optional="show"/>
