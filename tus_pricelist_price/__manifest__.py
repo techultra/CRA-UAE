@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Product Pricelist price ',
+
+    'name': 'Product Pricelist price TUS',
     'version': '13.0.22',
     'license': 'OPL-1',
     'category': 'Sale',
@@ -9,7 +10,8 @@
     'author': 'TechUltra Solutions',
     'website': 'https://www.techultrasolutions.com/',
     'maintainer': 'TechUltra Solutions',
-    'depends': ['sale_management'],
+
+    'depends': ['sale_management', 'stock_landed_costs'],
     'data': ['views/product_template_view.xml',
              'views/product_product_view.xml'],
     'installable': True,
