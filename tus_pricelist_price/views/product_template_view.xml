@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Added by Bhavesh Jadav 07/07/2020 For the price list price in product template view-->
+        <record id="product_template_form_view_inherit_price_list_price" model="ir.ui.view">
+            <field name="name">product.template.inherit.price.list.price</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+
+                    <field name="price_list_price" widget='monetary' readonly="False"/>
+                    <field name="product_landed_cost" widget='monetary' readonly="True"/>
+                  
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Added by Bhavesh Jadav 07/07/2020 For the price list price in product product view-->
+        <!-- Tree view-->
+        <record id="product_template_tree_view_inherit_pricelist_price" model="ir.ui.view">
+            <field name="name">product.template.tree.inherit.pricelist.price</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='list_price']" position="after">
+
+                    <field name="price_list_price" optional="show" readonly="False"/>
+                    <field name="sales_count" string="Quantity to sold" optional="show"/>
+                    <field name="product_landed_cost" optional="show" readonly="True"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

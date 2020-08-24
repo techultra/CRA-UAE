@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Added by Bhavesh Jadav 07/07/2020 For the price list price in product product view-->
+        <!-- Form view-->
+        <record id="product_product_view_form_inherit_pricelist_price" model="ir.ui.view">
+            <field name="name">product.product.view.form.inherit.pricelist.price</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+
+                    <field name="price_list_price" widget='monetary' readonly="False"/>
+
+                    <field name="product_landed_cost" widget='monetary' readonly="True"/>
+
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Added by Bhavesh Jadav 07/07/2020 For the price list price in product product view-->
+        <!-- Tree view-->
+        <record model="ir.ui.view" id="product_product_website_tree_view_inherit_pricelist_price">
+            <field name="name">product.product.inherit.pricelist.price.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lst_price']" position="after">
+
+                    <field name="price_list_price" optional="show" readonly="False"/> <!--readonly="True"-->
+                    <field name="product_landed_cost" optional="show" readonly="True"/>
+                    <field name="sales_count" string="Quantity to sold" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Added by Bhavesh Jadav 07/07/2020 For the price list price in product product view-->
+        <!--From view-->
+        <record id="product_variant_easy_edit_view_pricelist_price_inherit" model="ir.ui.view">
+            <field name="name">product.product.product.view.form.easy.pricelist.price.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="after">
+                    <field name="price_list_price" widget='monetary' readonly="False"/>
+                    <field name="product_landed_cost" widget='monetary' readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
