@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_body_sale_order" inherit_id="sale.report_saleorder_document">
+            <xpath expr='//t[2]' position='replace'/>
+            <xpath expr='//t[3]' position='replace'/>
+            <xpath expr='//div[@class="page"]' position='replace'>
+                <div class="oe_structure"/>
+
+                <h2 class="text-right">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span t-if="doc.state not in ['draft','sent']">Sale Order</span>
+                        <span t-if="doc.state in ['draft','sent']">Sale Quotation</span>
+                    </t>
+                </h2>
+                <br></br>
+                <style>
+                    .custom-table th, .custom-table td {
+                    border:2px solid #000;
+                    }
+                    .sale-order-head{
+                    width:100%;
+                    }
+                    .sale-order-head td:nth-child(even) {
+                    padding-left: 3%;
+                    }
+                </style>
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <table class="sale-order-head">
+                                <tbody>
+                                    <tr>
+                                        <td>Party</td>
+                                        <td><b><t t-if="doc.partner_id.name">
+                                            <span t-esc="doc.partner_id.name"/>
+                                        </t>
+                                            <t t-if="doc.partner_id.street">
+                                                <span t-esc="doc.partner_id.street"/>
+                                            </t>
+                                            <t t-if="doc.partner_id.street2">
+                                                <span t-esc="doc.partner_id.street2"/>
+                                            </t>
+                                            <t t-if="doc.partner_id.city">
+                                                <span t-esc="doc.partner_invoice_id.city"/>
+                                            </t>
+                                            <t t-if="doc.partner_id.country_id">
+                                                <span t-esc="doc.partner_id.country_id.name"/>
+                                            </t>
+                                        </b></td>
+                                        <td>SO No</td>
+                                        <td><strong><span t-esc="doc.name"/></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tel</td>
+                                        <td><strong><span t-esc="doc.partner_id.phone"/></strong></td>
+                                        <td><span t-if="doc.state not in ['draft','sent']">SO Date</span></td>
+                                        <td><strong><span t-if="doc.state not in ['draft','sent']"><span
+                                                t-esc="doc.date_order"/></span></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fax</td>
+                                        <td></td>
+                                        <td><span t-if="doc.state not in ['draft','sent']">Cust. LPO#</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRN</td>
+                                        <td></td>
+                                        <td><span t-if="doc.state not in ['draft','sent']">Cust. LPO Date</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td><span t-if="doc.state not in ['draft','sent']">Exp. Del Date</span></td>
+                                        <td><strong><span t-if="doc.state not in ['draft','sent']"><span
+                                                t-esc="doc.commitment_date"/></span></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                                                <span t-if="doc.state in ['draft','sent']">SQ Date</span>
+                                            </t>
+                                        </td>
+                                        <td><strong><span t-if="doc.state in ['draft','sent']"><span
+                                                t-esc="doc.date_order"/></span></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Payment Terms</td>
+                                        <td><strong><span t-esc="doc.payment_term_id.name"/></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                                                <span t-if="doc.state in ['draft','sent']">Validity Date</span>
+                                            </t>
+                                        </td>
+                                        <td><strong><span t-if="doc.state not in ['draft','sent']"><span
+                                                t-esc="doc.validity_date"/></span></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <table class="custom-table" style="width:100%" border="2">
+                    <thead class="table-active">
+                        <tr>
+                            <th>SI#</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unite</th>
+                            <th>AED Rate</th>
+                            <th>AED Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="counter" t-value="0"/>
+                        <t t-foreach="doc.order_line" t-as="orderline">
+                            <t t-set="counter" t-value="counter + 1"/>
+                            <tr>
+                                <td>
+                                    <span t-esc="counter"/>
+                                </td>
+                                <td>
+                                    <span t-esc="orderline.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="orderline.product_uom_qty"/>
+                                </td>
+                                <td>
+                                    <span t-esc="orderline.product_id.uom_name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="orderline.price_unit"/>
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td colspan="2" rowspan="2">
+                                <span t-esc="doc.digit_to_words()"/>
+                            </td>
+                            <td colspan="3">
+                                Gross Total
+                            </td>
+                            <td colspan="1">
+                                <span t-esc="doc.amount_untaxed"/>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                AED Net Total
+                            </td>
+                            <td colspan="1">
+                                <span t-esc="doc.amount_total"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br></br>
+                <div>
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span t-if="doc.state in ['draft','sent']">Expected Delivery Date:<span
+                                t-esc="doc.commitment_date"/></span>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
