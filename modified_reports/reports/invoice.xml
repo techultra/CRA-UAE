@@ -100,12 +100,6 @@
                                 </td>
                             </t>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Total Quantity: <span t-esc="quantity"></span></td>
-                        </tr>
 
                         <t t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')">
                             <tr class="is-subtotal text-right">
@@ -119,6 +113,12 @@
                             </tr>
                         </t>
                     </t>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Quantity: <span t-esc="quantity"></span></td>
+                    </tr>
                 </tbody>
             </xpath>
         </template>
