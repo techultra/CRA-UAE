@@ -105,14 +105,16 @@
                                     </t>
                                 </td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Total Quantity: <span t-esc="quantity"></span></td>
-                            </tr>
                         </t>
                     </t>
                 </tbody>
+                <t>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total Quantity: <span t-esc="quantity"></span></td>
+                    </tr>
+                </t>
             </xpath>
         </template>
     </data>

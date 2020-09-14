@@ -44,14 +44,14 @@
                             </td>
                         </tr>
                     </t>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Total Quantity: <span t-esc="quantity"></span>
-                        </td>
-                    </tr>
                 </tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Quantity: <span t-esc="quantity"></span>
+                    </td>
+                </tr>
             </xpath>
             <xpath expr='//table[@class="table table-sm mt48"]/thead' position='replace'>
                 <thead>
@@ -70,8 +70,10 @@
             <xpath expr='//table[@class="table table-sm mt48"]/tbody' position='replace'>
                 <tbody>
                     <t t-set="counter" t-value="0"/>
+                    <t t-set="quantity" t-value="0.00"/>
                     <t t-foreach="o.move_line_ids" t-as="move_line">
                         <t t-set="counter" t-value="counter + 1"/>
+                        <t t-set="quantity" t-value="quantity + move_line.qty_done"/>
                         <tr>
                             <td>
                                 <span t-esc="counter"/>
@@ -96,6 +98,12 @@
                         </tr>
                     </t>
                 </tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total Quantity: <span t-esc="quantity"></span>
+                    </td>
+                </tr>
             </xpath>
         </template>
     </data>
