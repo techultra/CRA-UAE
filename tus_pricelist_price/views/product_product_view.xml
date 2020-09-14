@@ -29,7 +29,9 @@
 
                     <field name="price_list_price" optional="show" readonly="False"/> <!--readonly="True"-->
                     <field name="product_landed_cost" optional="show" readonly="True"/>
-                    <field name="sales_count" string="Quantity to sold" optional="show"/>
+                    <field name="sales_count" string="Quantity Sold" optional="show"/>
+                    <field name="quantity_sellable"/>
+                    <field name="quantity_incoming"/>
                 </xpath>
             </field>
         </record>
