@@ -4,13 +4,14 @@
         <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
             <xpath expr='//h2' position='replace'>
                 <h2>
-                    Delivery Notes# <span t-field="o.name"/>
+                    Delivery Note# <span t-field="o.name"/>
                 </h2>
             </xpath>
             <xpath expr='//table[@class="table table-sm"]/thead' position='replace'>
                 <thead>
                     <tr>
                         <th name="th_sm_si"><strong>SI</strong></th>
+                        <th name="th_sm_si"><strong>SO</strong></th>
                         <th name="th_sm_product"><strong>Product</strong></th>
                         <th name="th_sm_quantity"><strong>Quantity</strong></th>
                     </tr>
@@ -19,12 +20,17 @@
             <xpath expr='//table[@class="table table-sm"]/tbody' position='replace'>
                 <tbody>
                     <t t-set="counter" t-value="0"/>
+                    <t t-set="quantity" t-value="0.00"/>
                     <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"/>
                     <t t-foreach="lines" t-as="move">
                         <t t-set="counter" t-value="counter + 1"/>
+                        <t t-set="quantity" t-value="quantity + move.product_uom_qty"/>
                         <tr>
                             <td>
                                 <span t-esc="counter"/>
+                            </td>
+                            <td>
+                                <span t-esc="o.sale_id.name"/>
                             </td>
                             <td>
                                 <span t-field="move.product_id"/>
@@ -35,6 +41,13 @@
                             <td>
                                 <span t-field="move.product_uom_qty"/>
                                 <span t-field="move.product_uom"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total Quantity: <span t-esc="quantity"></span><span t-field="move.product_uom"/>
                             </td>
                         </tr>
                     </t>

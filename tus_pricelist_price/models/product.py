@@ -143,6 +143,16 @@ class ProductProduct(models.Model):
     product_landed_cost = fields.Float(string="Average Landed Cost", compute='_compute_product_landed_cost',
                                        help="Average landed cost base on sum of all landed cost dived by the current stock",
                                        default="0.0")
+    quantity_sellable = fields.Float(string="Quantity Sellable", compute='_compute_quantity_sellable')
+    quantity_incoming = fields.Float(string="Incoming Quantity", compute='_compute_quantity_incoming')
+
+    def _compute_quantity_sellable(self):
+        for rec in self:
+            rec.quantity_sellable = rec.qty_available - rec.outgoing_qty
+
+    def _compute_quantity_incoming(self):
+        for rec in self:
+            rec.quantity_incoming = rec.incoming_qty
 
     @api.model
     def create(self, vals):
