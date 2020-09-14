@@ -43,14 +43,14 @@
                                 <span t-field="move.product_uom"/>
                             </td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Total Quantity: <span t-esc="quantity"></span><span t-field="move.product_uom"/>
-                            </td>
-                        </tr>
                     </t>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Quantity: <span t-esc="quantity"></span>
+                        </td>
+                    </tr>
                 </tbody>
             </xpath>
             <xpath expr='//table[@class="table table-sm mt48"]/thead' position='replace'>
