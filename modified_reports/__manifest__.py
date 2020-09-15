@@ -12,12 +12,13 @@
     'license': '',
 
     #  Depends
-    'depends': ['account', 'stock', 'sale_management'],
+    'depends': ['account', 'stock', 'sale_management', 'sale'],
     'external_dependencies': {},
     'data': [
         'reports/stock_picking_operation.xml',
         'reports/delivery_notes.xml',
         'reports/invoice.xml',
+        'reports/sale_order.xml',
     ],
 
     #  Others
