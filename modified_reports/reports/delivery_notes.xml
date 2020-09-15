@@ -59,6 +59,9 @@
                         <th>
                             <strong>SI</strong>
                         </th>
+                        <th>
+                            <strong>SO</strong>
+                        </th>
                         <th name="th_sml_product"><strong>Product</strong></th>
                         <th name="lot_serial" t-if="has_serial_number" groups="stock.group_lot_on_delivery_slip">
                             Lot/Serial Number
@@ -77,6 +80,9 @@
                         <tr>
                             <td>
                                 <span t-esc="counter"/>
+                            </td>
+                            <td>
+                                <span t-esc="o.sale_id.name"/>
                             </td>
                             <td>
                                 <span t-field="move_line.product_id"/>
@@ -99,6 +105,7 @@
                     </t>
                 </tbody>
                 <tr>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>Total Quantity: <span t-esc="quantity"></span>

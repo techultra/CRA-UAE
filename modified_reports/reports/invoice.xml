@@ -17,7 +17,7 @@
                         <!-- TODO: remove in master -->
                         <t t-set="colspan" t-value="6"/>
                         <th>SI</th>
-                        <th>SO</th>
+                        <th>SO Serial</th>
                         <th name="th_description" class="text-left"><span>Description</span></th>
                         <!-- TODO: remove in master -->
                         <th name="th_source" class="d-none text-left" t-if="0"><span>Source Document</span></th>
