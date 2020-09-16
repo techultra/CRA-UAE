@@ -91,7 +91,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><b>Total Quantity:</b><span t-esc="quantity"></span></td>
+                    <td><b>Total Qty:</b><span t-esc="quantity"></span></td>
                     <td></td>
                     <td></td>
                     <td></td>

@@ -118,7 +118,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Total Quantity: <span t-esc="quantity"></span></td>
+                    <td>Total Qty: <span t-esc="quantity"></span></td>
                     <td></td>
                     <td></td>
                     <td></td>

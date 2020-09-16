@@ -12,7 +12,7 @@
             <xpath expr='//div[@class="row mt48 mb32"]' position='inside'>
                 <div class="col-auto" name="div_sched_date">
                     <strong>Your Reference:</strong>
-                    <p t-field="o.partner_id.name"/>
+                    <p t-field="o.origin"/>
                 </div>
             </xpath>
             <xpath expr='//table/thead' position='replace'>
@@ -112,7 +112,7 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Total Quantity: <span t-esc="quantity"></span></td>
+                        <td>Total Qty: <span t-esc="quantity"></span></td>
                     </tr>
                 </t>
             </xpath>

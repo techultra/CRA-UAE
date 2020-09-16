@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th name="th_sm_si"><strong>SI</strong></th>
-                        <th name="th_sm_si"><strong>SO</strong></th>
+                        <th name="th_sm_si"><strong>SO Serial #</strong></th>
                         <th name="th_sm_product"><strong>Product</strong></th>
                         <th name="th_sm_quantity"><strong>Quantity</strong></th>
                     </tr>
@@ -108,7 +108,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Total Quantity: <span t-esc="quantity"></span>
+                    <td>Total Qty: <span t-esc="quantity"></span>
                     </td>
                 </tr>
             </xpath>
