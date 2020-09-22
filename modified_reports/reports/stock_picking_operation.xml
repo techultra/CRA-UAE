@@ -55,7 +55,6 @@
                     <t t-foreach="o.sale_id.order_line" t-as="order_line">
                                 <t t-if="not order_line.display_type">
                                     <t t-set="counter" t-value="counter + 1"/>
-                                    <t t-esc="counter"/>
                                 </t>
                     <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)" t-as="move">
                         <!-- In case you come accross duplicated lines, ask NIM or LAP -->
