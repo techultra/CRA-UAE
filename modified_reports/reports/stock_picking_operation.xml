@@ -52,15 +52,16 @@
                     <t t-set="counter" t-value="0"/>
                     <t t-set="counter_new" t-value="0"/>
                     <t t-set="quantity" t-value="0.00"/>
+                    <t t-foreach="o.sale_id.order_line" t-as="order_line">
+                                <t t-if="not order_line.display_type">
+                                    <t t-set="counter" t-value="counter + 1"/>
+                                    <t t-esc="counter"/>
+                                </t>
                     <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)" t-as="move">
                         <!-- In case you come accross duplicated lines, ask NIM or LAP -->
                         <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="ml">
-                            <t t-foreach="o.sale_id.order_line" t-as="order_line">
-                                <t t-if="not order_line.display_type">
-                                    <t t-set="counter" t-value="counter + 1"/>
-                                </t>
+
                                 <t t-if="order_line == ml.move_id.sale_line_id">
-                                    <!--                                    <t t-set="counter" t-value="counter + 1"/>-->
                                     <t t-if="o.state != 'done'" t-set="quantity"
                                        t-value="quantity + ml.product_uom_qty"/>
                                     <t t-if="o.state == 'done'" t-set="quantity" t-value="quantity + ml.qty_done"/>
