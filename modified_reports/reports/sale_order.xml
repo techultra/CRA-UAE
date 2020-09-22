@@ -31,13 +31,16 @@
                            groups="account.group_show_line_subtotals_tax_excluded"/>
                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
                            groups="account.group_show_line_subtotals_tax_included"/>
-                        <t t-set="counter" t-value="counter + 1"/>
                         <t t-set="quantity" t-value="quantity + line.product_uom_qty"/>
 
                         <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
-                            <td>
-                                <span t-esc="counter"/>
-                            </td>
+
+                            <t t-if="not line.display_type">
+                                <t t-set="counter" t-value="counter + 1" />
+                                <td>
+                                    <span t-esc="counter"/>
+                                </td>
+                            </t>
                             <t t-if="not line.display_type">
                                 <td name="td_name"><span t-field="line.name"/></td>
                                 <td name="td_quantity" class="text-right">
@@ -91,7 +94,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><b>Total Qty:</b><span t-esc="quantity"></span></td>
+                    <td><b>Total Quantity:</b><span t-esc="quantity"></span></td>
                     <td></td>
                     <td></td>
                     <td></td>
