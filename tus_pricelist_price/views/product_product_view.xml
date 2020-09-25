@@ -25,11 +25,23 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='lst_price']" position="after">
-
-                    <field name="price_list_price" optional="show" readonly="False"/> <!--readonly="True"-->
-                    <field name="product_landed_cost" optional="show" readonly="True"/>
-                    <field name="sales_count" string="Quantity to sold" optional="show"/>
+                <xpath expr="//tree" position="replace">
+                    <tree>
+                        <field name="default_code" optional="show" readonly="1"/>
+                        <field name="barcode" optional="hide" readonly="1"/>
+                        <field name="name" readonly="1"/>
+                        <field name="product_template_attribute_value_ids" widget="many2many_tags"
+                               groups="product.group_product_variant" readonly="1"/>
+                        <field name="uom_id"/>
+                        <field name="qty_available"/>
+                        <field name="quantity_sellable"/>
+                        <field name="price_list_price" optional="show" readonly="False"/> <!--readonly="True"-->
+                        <field name="standard_price"/>
+                        <field name="product_landed_cost" optional="show" readonly="True"/>
+                        <field name="quantity_incoming"/>
+                        <field name="virtual_available"/>
+                        <field name="sales_count" string="Quantity Sold" optional="show"/>
+                    </tree>
                 </xpath>
             </field>
         </record>
