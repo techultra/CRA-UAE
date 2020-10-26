@@ -32,13 +32,13 @@ class EmployeeGratuity(models.AbstractModel):
             if employee.contract_id.limit == 'limited':
                 if diff.years < 1:
                     gratuity = 0.00
-                if diff.years > 1 and diff.years < 5:
+                if diff.years >= 1 and diff.years < 5:
                     gratuity = daily_wage * 21 * diff.years
                     if diff.months:
                         gratuity = gratuity + ((wage / 12) * diff.months)
                     if diff.days:
                         gratuity = gratuity + ((wage / 30) * diff.days)
-                if diff.years > 5:
+                if diff.years >= 5:
                     gratuity = (daily_wage * 21 * 5) + (daily_wage * 30 * (diff.years - 5))
                     if diff.months:
                         gratuity = gratuity + ((wage / 12) * diff.months)
@@ -53,13 +53,13 @@ class EmployeeGratuity(models.AbstractModel):
                         gratuity = gratuity + ((wage / 12) * diff.months)
                     if diff.days:
                         gratuity = gratuity + ((wage / 30) * diff.days)
-                if diff.years > 3 and diff.years < 5:
+                if diff.years >= 3 and diff.years < 5:
                     gratuity = daily_wage * 21 * diff.years * (2 / 3)
                     if diff.months:
                         gratuity = gratuity + ((wage / 12) * diff.months)
                     if diff.days:
                         gratuity = gratuity + ((wage / 30) * diff.days)
-                if diff.years > 5:
+                if diff.years >= 5:
                     gratuity = (daily_wage * 21 * 5) + (daily_wage * 30 * (diff.years - 5))
                     if diff.months:
                         gratuity = gratuity + ((wage / 12) * diff.months)
