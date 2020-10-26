@@ -9,7 +9,7 @@
             <xpath expr="//field[@name='advantages']" position="before">
                 <label for="variable"/>
                 <div class="o_row" name="variable">
-                    <field name="variable" nolabel="1"/>
+                    <field name="variable" nolabel="1" required="1"/>
                     <span>/ month</span>
                 </div>
             </xpath>
