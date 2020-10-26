@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="gratuity_report_action"
+                model="report.tus_cra_extended.gratuity_report"
+                string="Gratuity Report"
+                report_type="qweb-pdf"
+                name="tus_cra_extended.gratuity_report"
+                menu="False"/>
+    </data>
+</odoo>
