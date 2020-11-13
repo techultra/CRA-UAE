@@ -12,14 +12,16 @@
     'license': '',
 
     #  Depends
-    'depends': ['purchase', 'hr_contract'],
+    'depends': ['purchase', 'hr_contract', 'hr_payroll'],
     'external_dependencies': {},
     'data': [
         'views/res_users.xml',
         'views/purchase_order_line.xml',
         'views/hr_contract.xml',
         'views/hr_employee.xml',
+        'views/hr_payslip.xml',
         'wizards/gratuity.xml',
+        'wizards/pay_slip_view.xml',
         'reports/report_action.xml',
         'reports/gratuity_report.xml',
     ],

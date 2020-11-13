@@ -13,6 +13,11 @@
                     <field name="total_service_year"/>
                 </group>
             </xpath>
+            <xpath expr="//page[@name='personal_information']/group/group[7]" position="after">
+                <group string="Card Number">
+                    <field name="iban_card_number"/>
+                </group>
+            </xpath>
         </field>
     </record>
 </odoo>

@@ -69,7 +69,7 @@ class EmployeeGratuity(models.AbstractModel):
                 gratuity = wage * 24
             else:
                 gratuity = gratuity
-            employee_data.append((employee.name, gratuity))
+            employee_data.append((employee.name, employee.date_of_join, employee.total_service_year, gratuity))
         return {
             'doc_ids': self.ids,
             'doc_model': 'gratuity.report',

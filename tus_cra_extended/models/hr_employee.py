@@ -12,6 +12,7 @@ class Employee(models.Model):
     date_of_join = fields.Date('Joining Date', track_visibility='onchange')
     date_of_leave = fields.Date('Leaving Date', track_visibility='onchange')
     total_service_year = fields.Char(compute='_get_service_year', string="Total Service Year")
+    iban_card_number = fields.Char(string='IBAN/RATIBI card number')
 
     def _get_service_year(self):
         """

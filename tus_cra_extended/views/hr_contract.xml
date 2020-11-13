@@ -7,6 +7,11 @@
         <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='advantages']" position="before">
+                <label for="fixed_portion"/>
+                <div class="o_row" name="fixed_portion">
+                    <field name="fixed_portion" nolabel="1" required="1"/>
+                    <span>/ month</span>
+                </div>
                 <label for="variable"/>
                 <div class="o_row" name="variable">
                     <field name="variable" nolabel="1" required="1"/>
