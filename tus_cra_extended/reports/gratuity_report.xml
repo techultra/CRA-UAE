@@ -18,6 +18,12 @@
                                             <strong>Employee</strong>
                                         </th>
                                         <th>
+                                            <strong>Joining Date</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Total Service Year</strong>
+                                        </th>
+                                        <th>
                                             <strong>Gratuity and Liability</strong>
                                         </th>
                                     </tr>
@@ -30,6 +36,12 @@
                                             </td>
                                             <td>
                                                 <span t-esc="gratuity[1]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="gratuity[2]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="gratuity[3]"/>
                                             </td>
                                         </tr>
                                     </t>
