@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="gratuity_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h3>
+                                <strong>Gratuity Up to: </strong><span t-esc="date"/>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <strong>Employee</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Joining Date</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Total Service Year</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Gratuity and Liability</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="employee_data" t-as="gratuity">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="gratuity[0]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="gratuity[1]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="gratuity[2]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="gratuity[3]"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
