@@ -22,6 +22,7 @@
         'views/hr_payslip.xml',
         'wizards/gratuity.xml',
         'wizards/pay_slip_view.xml',
+        'reports/hr_leave_type.xml',
         'reports/report_action.xml',
         'reports/gratuity_report.xml',
     ],
