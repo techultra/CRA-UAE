@@ -19,9 +19,9 @@ class PaySlipReport(models.TransientModel):
     _name = 'payslip.report'
     _description = "Payslip Report"
 
-    month = fields.Selection([('01', 'January'), ('02', 'February'), ('03', 'March'), ('04', 'April'), ('05', 'May'),
-                              ('06', 'June'), ('07', 'July'), ('08', 'August'), ('09', 'September'), ('10', 'October'),
-                              ('11', 'November'), ('12', 'December')], string="Months")
+    month = fields.Selection([('Jan', 'January'), ('Feb', 'February'), ('Mar', 'March'), ('Apr', 'April'), ('May', 'May'),
+                              ('Jun', 'June'), ('Jul', 'July'), ('Aug', 'August'), ('Sep', 'September'), ('Oct', 'October'),
+                              ('Nov', 'November'), ('Dec', 'December')], string="Months")
 
     def generate_report(self):
         filename = 'Payslip Report.xls'
@@ -32,6 +32,9 @@ class PaySlipReport(models.TransientModel):
         style_main_header = xlwt.easyxf('font: height 230, bold True, color black;\
                                                    borders: left thin, right thin, top thin, bottom thin;\
                                                    pattern: pattern solid, fore_color white; align:  horizontal center, wrap on, vertical center;')
+        style_main_header_data = xlwt.easyxf('font: height 230, bold True, underline on, color black;\
+                                                        borders: left 1, right 1, top 1, bottom 1;\
+                                                           pattern: pattern solid, fore_color white; align:  horizontal center, wrap on, vertical center;')
         style_main_bottom = xlwt.easyxf('font: height 230, bold True, color black;\
                                                            borders: left thin, right thin, top thin, bottom thin;\
                                                            pattern: pattern solid, fore_color white; align:  horizontal right, wrap on, vertical center;')
@@ -54,21 +57,27 @@ class PaySlipReport(models.TransientModel):
         border_style = xlwt.XFStyle()  # Create Style
         border_style.borders = borders
 
-        worksheet.write_merge(0, 1, 0, 0, 'SI.No', style_main_header)
-        worksheet.write_merge(0, 1, 1, 1, 'NAME OF THE EMPLOYEE', style_main_header)
-        worksheet.write_merge(0, 1, 2, 2, 'WORK PERMIT NO (8 DIGIT NO)', style_main_header)
-        worksheet.write_merge(0, 1, 3, 3, 'PERSONAL NO (14 DIGIT NO)', style_main_header)
-        worksheet.write_merge(0, 1, 4, 4, 'BANK NAME', style_main_header)
-        worksheet.write_merge(0, 1, 5, 5, 'IBAN /RATIBI CARD NUMBER', style_main_header)
-        worksheet.write_merge(0, 1, 6, 6, 'NO OF DAYS ABSENT', style_main_header)
-        worksheet.write_merge(0, 1, 7, 7, 'FIXED PORTION', style_main_header)
-        worksheet.write_merge(0, 1, 8, 8, 'VARIABLE', style_main_header)
-        worksheet.write_merge(0, 1, 9, 9, 'OVER TIME', style_main_header)
-        worksheet.write_merge(0, 1, 10, 10, 'Total Payment', style_main_header)
-        worksheet.write_merge(0, 1, 11, 11, '', style_main_header)
-        worksheet.write_merge(0, 1, 12, 12, '', style_main_header)
+        header_data = 'PAYROLL FOR THE MONTH OF ' + str(self.month) +' '+ str(date.today().year)
+        worksheet.write_merge(0, 0, 3, 5, 'C R A TRADING (L.L.C)', style_main_header_data)
+        worksheet.write_merge(1, 1, 3, 5, '', style_main_header_data)
+        worksheet.write_merge(2, 2, 3, 5, header_data, style_main_header_data)
 
-        row = 1
+        worksheet.write_merge(6, 7, 0, 0, 'SI.No', style_main_header)
+        worksheet.write_merge(6, 7, 1, 1, 'NAME OF THE EMPLOYEE', style_main_header)
+        worksheet.write_merge(6, 7, 2, 2, 'WORK PERMIT NO (8 DIGIT NO)', style_main_header)
+        worksheet.write_merge(6, 7, 3, 3, 'PERSONAL NO (14 DIGIT NO)', style_main_header)
+        worksheet.write_merge(6, 7, 4, 4, 'BANK NAME', style_main_header)
+        worksheet.write_merge(6, 7, 5, 5, 'IBAN /RATIBI CARD NUMBER', style_main_header)
+        worksheet.write_merge(6, 7, 6, 6, 'NO OF DAYS ABSENT', style_main_header)
+        worksheet.write_merge(6, 6, 7, 10, 'Employees Net Salary', style_main_header)
+        worksheet.write_merge(7, 7, 7, 7, 'FIXED PORTION', style_main_header)
+        worksheet.write_merge(7, 7, 8, 8, 'VARIABLE', style_main_header)
+        worksheet.write_merge(7, 7, 9, 9, 'OVER TIME', style_main_header)
+        worksheet.write_merge(7, 7, 10, 10, 'Total Payment', style_main_header)
+        # worksheet.write_merge(6, 7, 11, 11, '', style_main_header)
+        # worksheet.write_merge(6, 7, 12, 12, '', style_main_header)
+
+        row = 7
         column = 0
         payslip = self.env['hr.payslip'].search([])
         fixed_portion_sum=0
@@ -81,7 +90,7 @@ class PaySlipReport(models.TransientModel):
             for day in data.worked_days_line_ids:
                 if day.work_entry_type_id.name != "Attendance":
                     absent_days=absent_days+day.number_of_days
-            if data.date_from.strftime("%m") == self.month:
+            if data.date_from.strftime("%b") == self.month:
                 row += 1
                 count += 1
                 worksheet.write(row, column, count, style2)
@@ -102,7 +111,7 @@ class PaySlipReport(models.TransientModel):
                 # worksheet.write(row, column + 3, data.permit_no or '', style2)
                 # worksheet.write(row, column + 3, data.permit_no or '', style2)
         row += 1
-        worksheet.write_merge(row,row,0, 6 , 'Total', style_main_bottom)
+        worksheet.write_merge(row,row,0, 6 , 'Total in Dirhms', style_main_bottom)
         worksheet.write(row, 7, fixed_portion_sum, style_main_header)
         worksheet.write(row, 8, variable_sum, style_main_header)
         worksheet.write(row, 9, over_time_sum, style_main_header)

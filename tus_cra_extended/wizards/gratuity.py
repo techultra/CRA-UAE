@@ -5,7 +5,7 @@ class ProjectReport(models.TransientModel):
     _name = 'gratuity.report'
     _description = "Gratuity Report"
 
-    date_from = fields.Date(string='Date From')
+    date_from = fields.Date(string='Date Due')
 
     def get_report(self):
         data = {

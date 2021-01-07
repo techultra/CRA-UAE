@@ -26,6 +26,9 @@
                                         <th>
                                             <strong>Gratuity and Liability</strong>
                                         </th>
+                                        <th>
+                                            <strong>Gratuity and Termination</strong>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,7 +44,10 @@
                                                 <span t-esc="gratuity[2]"/>
                                             </td>
                                             <td>
-                                                <span t-esc="gratuity[3]"/>
+                                                <span t-esc="'%.2f'% gratuity[3]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'%.2f'% gratuity[4]"/>
                                             </td>
                                         </tr>
                                     </t>

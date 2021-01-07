@@ -19,14 +19,23 @@ class Employee(models.Model):
             Calculate the total no of years, total no of months.
         """
         for rec in self:
-            if rec.date_of_join and datetime.strptime(str(rec.date_of_join), DEFAULT_SERVER_DATE_FORMAT) < datetime.strptime(
+            leave_count = 0
+            hr_leaves = self.env['hr.leave'].search(
+                [('employee_id', '=', rec.id), ('state', '=', 'validate'), ('holiday_status_id.is_unpaid', '=', True)])
+            if hr_leaves:
+                leave_count = int(sum(hr_leaves.mapped('number_of_days')))
+            if rec.date_of_join and datetime.strptime(str(rec.date_of_join),
+                                                      DEFAULT_SERVER_DATE_FORMAT) < datetime.strptime(
                     str(datetime.today().date().strftime(DEFAULT_SERVER_DATE_FORMAT)), DEFAULT_SERVER_DATE_FORMAT):
                 if rec.date_of_leave:
                     diff = relativedelta(datetime.strptime(str(rec.date_of_leave), DEFAULT_SERVER_DATE_FORMAT),
                                          datetime.strptime(str(rec.date_of_join), DEFAULT_SERVER_DATE_FORMAT))
+                    diff -= relativedelta(days=leave_count)
                 else:
                     diff = relativedelta(datetime.today(),
                                          datetime.strptime(str(rec.date_of_join), DEFAULT_SERVER_DATE_FORMAT))
-                rec.total_service_year = " ".join([str(diff.years), 'Years', str(diff.months), "Months", str(diff.days), "Days"])
+                    diff -= relativedelta(days=leave_count)
+                rec.total_service_year = " ".join(
+                    [str(diff.years), 'Years', str(diff.months), "Months", str(diff.days), "Days"])
             else:
                 rec.total_service_year = "0 Years 0 Months 0 Days"
