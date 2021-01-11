@@ -44,14 +44,14 @@ class EmployeeGratuity(models.AbstractModel):
             '''for Termination'''
             if diff.years < 1:
                 gratuity_termination = 0.00
-            if diff.years >= 1 and diff.years < 5:
+            if diff.years >= 1 and diff.years <= 5:
                 gratuity_termination = daily_wage * 21 * diff.years
 
                 if diff.months:
                     gratuity_termination = gratuity_termination + ((21) *(daily_wage) * (diff.months/12))
                 if diff.days:
                     gratuity_termination = gratuity_termination + ((21) * (daily_wage) * (diff.days/365))
-            if diff.years >= 5:
+            if diff.years > 5:
                 gratuity_termination = (daily_wage * 21 * 5) + (daily_wage * 30 * (diff.years - 5))
                 if diff.months:
                     gratuity_termination = gratuity_termination + ((30) *(daily_wage) * (diff.months/12))
@@ -62,13 +62,13 @@ class EmployeeGratuity(models.AbstractModel):
                 '''for resignation'''
                 if diff.years < 1:
                     gratuity = 0.00
-                if diff.years >= 1 and diff.years < 5:
+                if diff.years >= 1 and diff.years <= 5:
                     gratuity = daily_wage * 21 * diff.years
                     if diff.months:
                         gratuity = gratuity + ((21) * (daily_wage) * (diff.months / 12))
                     if diff.days:
                         gratuity = gratuity + ((21) * (daily_wage) * (diff.days / 365))
-                if diff.years >= 5:
+                if diff.years > 5:
                     gratuity = (daily_wage * 21 * 5) + (daily_wage * 30 * (diff.years - 5))
                     if diff.months:
                         gratuity = gratuity + ((30) * (daily_wage) * (diff.months / 12))
@@ -90,7 +90,13 @@ class EmployeeGratuity(models.AbstractModel):
                         gratuity = gratuity + ((14) * (daily_wage) * (diff.months / 12))
                     if diff.days:
                         gratuity = gratuity + ((14) * daily_wage * (diff.days / 365))
-                if diff.years >= 5:
+                if diff.years == 5:
+                    gratuity = (daily_wage * 21 * 5) + (daily_wage * 21 * (diff.years - 5))
+                    if diff.months:
+                        gratuity = gratuity + (21 * daily_wage * (diff.months / 12))
+                    if diff.days:
+                        gratuity = gratuity + (21 * daily_wage * (diff.days / 365))
+                if diff.years > 5:
                     gratuity = (daily_wage * 21 * 5) + (daily_wage * 30 * (diff.years - 5))
                     if diff.months:
                         gratuity = gratuity + (30 * daily_wage * (diff.months / 12))
