@@ -26,7 +26,7 @@
             <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="replace">
-                    <tree>
+                    <tree multi_edit="1">
                         <field name="default_code" optional="show" readonly="1"/>
                         <field name="barcode" optional="hide" readonly="1"/>
                         <field name="name" readonly="1"/>
