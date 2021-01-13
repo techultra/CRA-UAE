@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <template id="report_invoice_document" inherit_id="account.report_invoice_document">
-            <xpath expr='//h2/span[7]' position='before'>
-                Tax Invoice
-            </xpath>
+<!--            <xpath expr='//h2/span[7]' position='before'>-->
+<!--                Tax Invoice-->
+<!--            </xpath>-->
             <xpath expr='//div[@class="row mt32 mb32"]' position='inside'>
                 <div>
                     <strong>DO #:</strong>
