@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Orders Main in Sales -->
+        <record id="sale.sale_order_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Quotation in Orders Main in Sales -->
+        <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Order in Orders Main in Sales -->
+        <record id="sale.menu_sale_order" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Sales Team in Orders Main in Sales -->
+        <record id="sale.report_sales_team" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Customers in Orders Main in Sales -->
+        <record id="sale.res_partner_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- To Invoice Main in Sales -->
+        <record id="sale.menu_sale_invoicing" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Orders To Invoice Main in Sales -->
+        <record id="sale.menu_sale_order_invoice" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Orders To Upsell Main in Sales -->
+        <record id="sale.menu_sale_order_upselling" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Products Main in Sales -->
+        <record id="sale.menu_product_template_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Products in Products Main in Sales -->
+        <record id="sale.product_menu_catalog" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Product Variants in Products Main in Sales -->
+        <record id="sale.menu_product" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Product Variants in Products Main in Sales -->
+        <record id="sale.menu_products" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Pricelist Main in Sales -->
+        <record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_manager_users_tus')])]"/>
+        </record>
+
+        <!-- Reporting Main in Sales -->
+        <record id="sale.menu_sale_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_office_users_tus')])]"/>
+        </record>
+
+        <!-- Configuration Main in Sales -->
+        <record id="sale.menu_sale_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Settings in Configuration Main in Sales -->
+        <record id="sale.menu_sale_general_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Sales Teams in Configuration Main in Sales -->
+        <record id="sale.sales_team_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Sales Orders in Configuration Main in Sales -->
+        <record id="sale.menu_sales_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Products in Configuration Main in Sales -->
+        <record id="sale.prod_config_main" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Attributes in Configuration Main in Sales -->
+        <record id="sale_management.menu_product_attribute_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Unit of Measure in Configuration Main in Sales -->
+        <record id="sale.next_id_16" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Unit of Measure in Configuration Main in Sales -->
+        <record id="sale.menu_product_uom_form_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Unit of Measure Category in Configuration Main in Sales -->
+        <record id="sale.menu_product_uom_categ_form_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+
+        <!-- Activity Types in Configuration Main in Sales -->
+        <record id="sale.sale_menu_config_activity_type" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tus_cra_extended.group_super_admin_users_tus')])]"/>
+        </record>
+    </data>
+</odoo>

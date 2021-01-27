@@ -15,6 +15,9 @@
     'depends': ['purchase', 'hr_contract', 'hr_payroll'],
     'external_dependencies': {},
     'data': [
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
+        'views/menu_access_rights.xml',
         'views/res_users.xml',
         'views/purchase_order_line.xml',
         'views/hr_contract.xml',
