@@ -16,6 +16,7 @@
     'external_dependencies': {},
     'data': [
         'security/res_groups.xml',
+        'security/ir.model.access.csv',
         'views/menu_access_rights.xml',
         'views/res_users.xml',
         'views/purchase_order_line.xml',
